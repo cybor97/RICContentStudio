@@ -1,0 +1,10 @@
+﻿<Grid x:Class="RICContentStudio.EditableLabel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" LostFocus="OKButton_Click" KeyDown="Grid_KeyDown">
+    <TextBox Name="ContentTextBox" Visibility="Hidden"/>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+        <Button Name="EditButton" Visibility="Hidden" Height="{Binding ElementName=OKButton, Path=ActualWidth, Mode=OneWay}" Click="EditButton_Click" Content=" &#9776; "/>
+        <Button Name="OKButton" Visibility="Hidden" Height="{Binding ElementName=OKButton, Path=ActualWidth, Mode=OneWay}" Click="OKButton_Click" Content="OK"/>
+    </StackPanel>
+    <TextBlock Name="ContentTB" MouseLeftButtonDown="ContentTB_MouseLeftButtonDown"/>
+</Grid>

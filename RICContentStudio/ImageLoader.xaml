@@ -1,0 +1,37 @@
+﻿<Grid x:Class="RICContentStudio.ImageLoader" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:res="clr-namespace:RICContentStudio.Properties"
+      xmlns:local="clr-namespace:RICContentStudio" >
+    <Image Name="LoadedImage" Stretch="Fill"/>
+    <Grid Name="ControlsContainer" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="1" Background="#66000000"
+          MouseLeftButtonDown="MD" MouseEnter="ControlsContainer_MouseEnter" MouseLeave="ControlsContainer_MouseLeave">
+        <x:Code>
+            void MD(object sender, MouseEventArgs EA)
+            {
+                ProvideYourLinkTB.UnFocus();
+            }
+        </x:Code>
+        <Grid.Resources>
+            <Storyboard x:Key="AppearStoryboard" TargetName="ControlsContainer" TargetProperty="Opacity">
+                <DoubleAnimation To="1" Duration="0:0:0.3"/>
+            </Storyboard>
+            <Storyboard x:Key="DisappearStoryboard" TargetName="ControlsContainer" TargetProperty="Opacity">
+                <DoubleAnimation To="0" Duration="0:0:0.3"/>
+            </Storyboard>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ScrollViewer Grid.Row="2" Background="#FF323232" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled" MouseEnter="ControlsContainer_MouseEnter">
+            <local:EditableLabel  x:Name="ProvideYourLinkTB" Text="{x:Static res:Resources.ProvideYourLink}"  Foreground="White"
+                                  ClearThisTime="True" InputCompleted="ProvideYourLinkTB_InputCompleted"/>
+        </ScrollViewer>
+        <TextBlock Text="{x:Static res:Resources.Or}" HorizontalAlignment="Center" Foreground="White" Grid.Row="3" MouseEnter="ControlsContainer_MouseEnter"/>
+        <Button Name="ProvideYourFile" Content="{x:Static res:Resources.ProvideYourFile}" Click="ProvideYourFile_Click" Grid.Row="4" MouseEnter="ControlsContainer_MouseEnter"/>
+    </Grid>
+</Grid>
